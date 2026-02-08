@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Happy Chocolate Day Anmol | 8K Ultra</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;700&display=swap');
+
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            background: #050202; 
+            font-family: 'Lato', sans-serif;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        #input-trap {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 10; cursor: pointer; background: transparent;
+        }
+
+        #ui-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 20;
+        }
+
+        #glass-card {
+            background: rgba(20, 5, 5, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 75px 120px;
+            text-align: center;
+            border-radius: 24px;
+            box-shadow: 0 50px 120px rgba(0,0,0,1.0);
+            transform-style: preserve-3d;
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        h2 {
+            margin: 0 0 10px 0; color: #ffcdc9; font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem; text-shadow: 0 0 10px rgba(255, 150, 150, 0.4);
+            transform: translateZ(30px);
+        }
+
+        h1 {
+            margin: 0; font-size: 6.5rem; letter-spacing: -0.02em;
+            font-family: 'Playfair Display', serif; font-weight: 700;
+            line-height: 0.95;
+            background: linear-gradient(145deg, #ffffff 45%, #ffc0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            transform: translateZ(60px);
+        }
+
+        p#subtitle {
+            margin-top: 35px; color: #e6c8a5; font-size: 0.9rem; letter-spacing: 0.5em;
+            text-transform: uppercase; font-weight: 700; 
+            border-top: 1px solid rgba(230, 200, 165, 0.3);
+            border-bottom: 1px solid rgba(230, 200, 165, 0.3);
+            display: inline-block; padding: 14px 0;
+            transform: translateZ(30px);
+        }
+
+        /* PERSONALIZED SIGNATURE */
+        #signature {
+            margin-top: 30px; 
+            color: #ffcdc9; 
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem; /* Slightly larger */
+            text-shadow: 0 0 15px rgba(255, 100, 100, 0.6);
+            transform: translateZ(30px); 
+            transition: all 1.2s;
+        }
+
+        #final-message {
+            position: absolute; bottom: 12%; 
+            opacity: 0; pointer-events: none; transition: opacity 1.0s, transform 1.2s;
+            text-align: center; width: 100%;
+            transform: translateY(30px) translateZ(60px);
+        }
+        
+        .cta-btn {
+            position: relative;
+            background: rgba(255, 230, 200, 0.03); 
+            color: #fff8f0; 
+            padding: 24px 75px; 
+            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem;
+            letter-spacing: 0.1em; text-transform: uppercase; 
+            cursor: pointer; 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 100px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            transition: all 0.3s ease; 
+            display: inline-block; margin-top: 30px;
+            pointer-events: auto; overflow: hidden;
+        }
+        
+        .cta-btn::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+            transform: skewX(-20deg); animation: ultraShine 3.5s infinite;
+        }
+
+        .cta-btn:hover { 
+            transform: scale(1.05) translateY(-2px); 
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff; box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+        }
+
+        /* SENT STATE - White background so Pink Heart pops */
+        .cta-btn.sent {
+            background: #ffffff; 
+            border-color: #ffffff; 
+            color: #d6336c; /* Dark Pink Text */
+            box-shadow: 0 0 80px rgba(255, 255, 255, 0.6);
+            animation: pulse 1.5s infinite; 
+            pointer-events: none;
+        }
+
+        @keyframes ultraShine { 0% { left: -100%; } 15% { left: 200%; } 100% { left: 200%; } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+        .vanish { 
+            opacity: 0 !important; 
+            transform: scale(1.1) translateY(-40px) rotateX(20deg) !important; 
+            filter: blur(5px); pointer-events: none; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="input-trap"></div>
+
+    <div id="ui-layer">
+        <div id="glass-card">
+            <h2>Wishing you a</h2>
+            <h1 id="title">Happy<br>Chocolate Day</h1>
+            <p id="subtitle">Tap to Unwrap Sweetness</p>
+        </div>
+        
+        <div id="signature">Especially for Anmol</div>
+        
+        <div id="final-message">
+            <h2 id="final-h2" style="color: #fff; font-size: 2.2rem; font-family: 'Lato'; text-transform: uppercase; letter-spacing: 0.2em; text-shadow: 0 0 20px rgba(255,255,255,0.4);">Sweetness Delivered!</h2>
+            <button class="cta-btn" id="send-btn">Send Your Love</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/GammaCorrectionShader.js"></script>
+
+    <script>
+        // --- 1. SETUP (8K UNLOCKED) ---
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x000000, 0.01); 
+
+        const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
+        camera.position.set(0, 0, 50);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "high-performance" });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio); // Native Resolution
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
+        document.body.appendChild(renderer.domElement);
+
+        // --- 2. ENVIRONMENT (4K) ---
+        function createStudioEnv() {
+            const size = 4096; // 4K Texture
+            const canvas = document.createElement('canvas');
+            canvas.width = size; canvas.height = size / 2; 
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createLinearGradient(0, 0, 0, size / 2);
+            grad.addColorStop(0.0, "#080202"); grad.addColorStop(0.5, "#1a0a0a"); grad.addColorStop(1.0, "#000000"); 
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, size, size / 2);
+            ctx.fillStyle = "rgba(255, 230, 210, 0.9)"; ctx.beginPath(); ctx.ellipse(size*0.75, size*0.2, 250, 100, -0.6, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = "rgba(200, 220, 255, 0.6)"; ctx.beginPath(); ctx.rect(size*0.1, size*0.1, 80, 400); ctx.fill();
+            for(let i=0; i<80; i++) {
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.random()*0.9})`; 
+                ctx.beginPath(); ctx.arc(Math.random()*size, Math.random()*size/2, Math.random()*4, 0, Math.PI*2); ctx.fill();
+            }
+            const tex = new THREE.CanvasTexture(canvas);
+            tex.mapping = THREE.EquirectangularReflectionMapping; tex.encoding = THREE.sRGBEncoding;
+            tex.minFilter = THREE.LinearFilter; tex.magFilter = THREE.LinearFilter;
+            return tex;
+        }
+        const envMap = createStudioEnv();
+        scene.environment = envMap; scene.background = envMap;  
+
+        // --- 3. MATERIALS (High Fidelity) ---
+        function createEngravedTexture() {
+            const size = 4096; // 4K Texture
+            const canvas = document.createElement('canvas');
+            canvas.width = size; canvas.height = size; const ctx = canvas.getContext('2d');
+            
+            // White BG = High Surface
+            ctx.fillStyle = "#ffffff"; ctx.fillRect(0,0,size,size);
+            
+            // Black Text = Engraved Deep
+            ctx.fillStyle = "#000000"; ctx.font = "900 800px 'Times New Roman', serif"; 
+            ctx.textAlign = "center"; ctx.textBaseline = "middle";
+            ctx.shadowColor = "rgba(0,0,0,0.6)"; ctx.shadowBlur = 20; ctx.fillText("Amul", size/2, size/2);
+            
+            // Ultra-fine Noise
+            ctx.shadowColor = "transparent";
+            for(let i=0; i<200000; i++) {
+                const shade = 240 + Math.random() * 15; ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
+                ctx.fillRect(Math.random()*size, Math.random()*size, 3, 3);
+            }
+            return new THREE.CanvasTexture(canvas);
+        }
+        
+        const ultraBumpMap = createEngravedTexture();
+        ultraBumpMap.anisotropy = renderer.capabilities.getMaxAnisotropy(); // 16x Anisotropy
+
+        const matChoco = new THREE.MeshPhysicalMaterial({
+            color: 0x2e1c16,
+            roughness: 0.02,         
+            metalness: 0.0,
+            ior: 1.6,                
+            clearcoat: 1.0,          
+            clearcoatRoughness: 0.0, 
+            reflectivity: 0.5,
+            bumpMap: ultraBumpMap,
+            bumpScale: 0.12,         
+            envMapIntensity: 2.5 
+        });
+
+        const matFoil = new THREE.MeshStandardMaterial({ color: 0xffd700, roughness: 0.2, metalness: 1.0, side: THREE.DoubleSide, envMapIntensity: 1.8 });
+
+        // --- 4. GEOMETRY ---
+        const barGroup = new THREE.Group();
+        const pieces = [];
+        const shape = new THREE.Shape();
+        const s = 2.8; const c = 0.2;
+        shape.moveTo(-s/2+c, -s/2); shape.lineTo(s/2-c, -s/2); shape.lineTo(s/2, -s/2+c);
+        shape.lineTo(s/2, s/2-c); shape.lineTo(s/2-c, s/2); shape.lineTo(-s/2+c, s/2);
+        shape.lineTo(-s/2, s/2-c); shape.lineTo(-s/2, -s/2+c);
+        const geoPiece = new THREE.ExtrudeGeometry(shape, { steps: 1, depth: 0.5, bevelEnabled: true, bevelThickness: 0.12, bevelSize: 0.1, bevelSegments: 6 }); 
+        geoPiece.center();
+
+        const cols = 4; const rows = 6;
+        for(let x=0; x<cols; x++) {
+            for(let y=0; y<rows; y++) {
+                // Using pure Amul text on every piece
+                const piece = new THREE.Mesh(geoPiece, matChoco);
+                piece.castShadow = true; piece.receiveShadow = true; 
+                const px = (x - (cols-1)/2) * 3.05; const py = (y - (rows-1)/2) * 3.05;
+                piece.position.set(px, py, 0);
+                piece.userData = { velocity: new THREE.Vector3(0,0,0), rotationAxis: new THREE.Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5).normalize(), rotationSpeed: 0, radius: 1.6 };
+                barGroup.add(piece); pieces.push(piece);
+            }
+        }
+        
+        const geoWrap = new THREE.PlaneGeometry(13, 20, 60, 60); 
+        const pos = geoWrap.attributes.position;
+        for(let i=0; i<pos.count; i++) pos.setZ(i, pos.getZ(i) + Math.sin(pos.getX(i)*5)*0.15 + Math.random()*0.02);
+        geoWrap.computeVertexNormals();
+        const wrapFront = new THREE.Mesh(geoWrap, matFoil);
+        wrapFront.position.z = 0.55; wrapFront.castShadow = true;
+        const wrapBack = new THREE.Mesh(geoWrap, matFoil);
+        wrapBack.position.z = -0.55; wrapBack.rotation.y = Math.PI;
+        barGroup.add(wrapFront); barGroup.add(wrapBack); scene.add(barGroup);
+
+        // --- 5. EFFECTS ---
+        const dustGeo = new THREE.BufferGeometry();
+        const dustPos = [];
+        for(let i=0; i<1200; i++) dustPos.push((Math.random()-0.5)*70, (Math.random()-0.5)*70, (Math.random()-0.5)*40);
+        dustGeo.setAttribute('position', new THREE.Float32BufferAttribute(dustPos, 3));
+        const dustMat = new THREE.PointsMaterial({ color: 0xffd700, size: 0.12, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending }); 
+        const dustSystem = new THREE.Points(dustGeo, dustMat);
+        scene.add(dustSystem);
+
+        function createHeartTexture() {
+            const canvas = document.createElement('canvas'); canvas.width = 128; canvas.height = 128; 
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = "#ffaaaa"; ctx.beginPath();
+            const sc = 2; 
+            ctx.moveTo(32*sc, 20*sc); ctx.bezierCurveTo(32*sc, 17*sc, 30*sc, 0, 15*sc, 0); ctx.bezierCurveTo(0, 0, 0, 22.5*sc, 0, 22.5*sc);
+            ctx.bezierCurveTo(0, 35*sc, 15*sc, 47*sc, 32*sc, 60*sc); ctx.bezierCurveTo(49*sc, 47*sc, 64*sc, 35*sc, 64*sc, 22.5*sc);
+            ctx.bezierCurveTo(64*sc, 22.5*sc, 64*sc, 0, 49*sc, 0); ctx.bezierCurveTo(37*sc, 0, 32*sc, 17*sc, 32*sc, 20*sc);
+            ctx.fill(); return new THREE.CanvasTexture(canvas);
+        }
+        const heartGeo = new THREE.BufferGeometry();
+        const heartPos = [];
+        for(let i=0; i<150; i++) heartPos.push((Math.random()-0.5)*90, (Math.random()-0.5)*90, (Math.random())*-30 + 10);
+        heartGeo.setAttribute('position', new THREE.Float32BufferAttribute(heartPos, 3));
+        const heartMat = new THREE.PointsMaterial({ color: 0xffcccc, size: 1.5, map: createHeartTexture(), transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false });
+        const heartSystem = new THREE.Points(heartGeo, heartMat);
+        scene.add(heartSystem);
+
+        const confettiGeo = new THREE.BufferGeometry();
+        const confettiPos = []; const confettiColors = []; const confettiVels = [];
+        const palette = [new THREE.Color(0xffd700), new THREE.Color(0xff3366), new THREE.Color(0xffffff)];
+        for(let i=0; i<500; i++) {
+            confettiPos.push(0,0,0); const c = palette[Math.floor(Math.random()*palette.length)];
+            confettiColors.push(c.r, c.g, c.b); confettiVels.push(new THREE.Vector3(0,0,0));
+        }
+        confettiGeo.setAttribute('position', new THREE.Float32BufferAttribute(confettiPos, 3));
+        confettiGeo.setAttribute('color', new THREE.Float32BufferAttribute(confettiColors, 3));
+        const confettiMat = new THREE.PointsMaterial({ size: 1.0, vertexColors: true, transparent: true, opacity: 0 }); 
+        const confettiSystem = new THREE.Points(confettiGeo, confettiMat);
+        scene.add(confettiSystem);
+
+        // --- 6. LIGHTING ---
+        const keyLight = new THREE.DirectionalLight(0xffeedd, 3.0);
+        keyLight.position.set(20, 40, 30); keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 4096; keyLight.shadow.mapSize.height = 4096;
+        keyLight.shadow.bias = -0.00005; 
+        const d = 15; keyLight.shadow.camera.left = -d; keyLight.shadow.camera.right = d; keyLight.shadow.camera.top = d; keyLight.shadow.camera.bottom = -d;
+        scene.add(keyLight);
+        const rimLight = new THREE.SpotLight(0xffaaee, 4.0); rimLight.position.set(-30, 10, -10); rimLight.lookAt(0,0,0); scene.add(rimLight);
+        const fillLight = new THREE.PointLight(0xc96d46, 1.0, 100); fillLight.position.set(-20, -20, 20); scene.add(fillLight);
+        const mouseLight = new THREE.PointLight(0xffaa00, 1.5, 30); scene.add(mouseLight);
+
+        // --- 7. POST PROCESSING ---
+        const composer = new THREE.EffectComposer(renderer);
+        composer.addPass(new THREE.RenderPass(scene, camera));
+        const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.4, 0.1, 0.96);
+        composer.addPass(bloomPass);
+        const gammaPass = new THREE.ShaderPass(THREE.GammaCorrectionShader);
+        composer.addPass(gammaPass);
+
+        // --- 8. LOGIC ---
+        let mouseX = 0, mouseY = 0;
+        let mouseVector = new THREE.Vector3();
+        let state = 0;
+        let cameraShake = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            mouseVector.set(mouseX * 25, mouseY * 25, 0);
+            
+            if(state === 0) {
+                const tiltX = (e.clientY / window.innerHeight - 0.5) * 15;
+                const tiltY = (e.clientX / window.innerWidth - 0.5) * -15;
+                const transform = `translateZ(0) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                document.getElementById('glass-card').style.transform = transform;
+                document.getElementById('signature').style.transform = transform + " translateZ(30px)";
+            }
+        });
+
+        // Button Action - Pink Heart with White Background for contrast
+        document.getElementById('send-btn').addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            const btn = document.getElementById('send-btn');
+            btn.innerText = "Sent! 💗"; // Pink Heart
+            btn.classList.add('sent'); // Turns White background
+            
+            confettiMat.opacity = 1;
+            const cPos = confettiGeo.attributes.position.array;
+            for(let i=0; i<500; i++) {
+                cPos[i*3] = 0; cPos[i*3+1] = -10; cPos[i*3+2] = 0;
+                confettiVels[i].set((Math.random()-0.5)*2, Math.random()*3 + 1, (Math.random()-0.5)*1.5);
+            }
+            confettiGeo.attributes.position.needsUpdate = true;
+            bloomPass.strength = 1.0; new TWEEN.Tween(bloomPass).to({strength: 0.4}, 1500).start();
+        });
+
+        function trigger(e) {
+            if(e) e.stopPropagation();
+            if(state === 0) {
+                state = 1;
+                document.getElementById('subtitle').innerText = "Click to Break";
+                new TWEEN.Tween(wrapFront.position).to({z: 12}, 1500).easing(TWEEN.Easing.Exponential.Out).start();
+                new TWEEN.Tween(wrapBack.position).to({z: -12}, 1500).easing(TWEEN.Easing.Exponential.Out).start();
+                new TWEEN.Tween(wrapFront.material).to({opacity: 0}, 1000).onUpdate(()=>{ if(wrapFront.material.opacity<0.9) wrapFront.material.transparent=true; }).start();
+                new TWEEN.Tween(wrapBack.material).to({opacity: 0}, 1000).onUpdate(()=>{ if(wrapBack.material.opacity<0.9) wrapBack.material.transparent=true; }).start();
+            } else if(state === 1) {
+                state = 2;
+                document.getElementById('glass-card').classList.add('vanish');
+                document.getElementById('signature').classList.add('vanish');
+                cameraShake = 1.0;
+                pieces.forEach(p => {
+                    const dir = p.position.clone().normalize().multiplyScalar(0.4);
+                    p.userData.velocity.set(dir.x + (Math.random()-0.5)*0.3, dir.y + (Math.random()-0.5)*0.3, (Math.random()-0.5)*0.5);
+                    p.userData.rotationSpeed = 0.05 + Math.random()*0.1;
+                });
+                confettiMat.opacity = 1; state = 3; 
+                setTimeout(() => {
+                    const msg = document.getElementById('final-message');
+                    msg.style.opacity = 1; msg.style.transform = "translateZ(60px) translateY(0)";
+                    msg.style.pointerEvents = "auto";
+                }, 1000);
+            }
+        }
+        document.getElementById('input-trap').addEventListener('click', trigger);
+
+        // --- 9. PHYSICS ---
+        function updatePhysics() {
+            if(state < 2) return;
+            pieces.forEach(p => { if(Math.abs(p.position.z) > 8) p.userData.velocity.z -= p.position.z * 0.005; });
+            pieces.forEach(p => { const distXY = Math.sqrt(p.position.x*p.position.x + p.position.y*p.position.y); if(distXY > 18) { const angle = Math.atan2(p.position.y, p.position.x); p.userData.velocity.x -= Math.cos(angle) * 0.002; p.userData.velocity.y -= Math.sin(angle) * 0.002; }});
+            pieces.forEach(p => { const dx = p.position.x - mouseVector.x; const dy = p.position.y - mouseVector.y; const distSq = dx*dx + dy*dy; if(distSq < 144) { const dist = Math.sqrt(distSq); let nx = dx / dist; let ny = dy / dist; if(dist === 0) { nx = 1; ny = 0; } const force = (12 - dist) * 0.015; p.userData.velocity.x += nx * force; p.userData.velocity.y += ny * force; p.userData.velocity.z += (Math.random()-0.5) * force * 0.5; }});
+            const restitution = 0.6; 
+            for(let i=0; i<pieces.length; i++) { for(let j=i+1; j<pieces.length; j++) { const p1 = pieces[i], p2 = pieces[j]; const d = p1.position.distanceTo(p2.position); const minD = p1.userData.radius + p2.userData.radius; if(d < minD && d > 0.001) { const n = p1.position.clone().sub(p2.position).normalize(); const relVel = p1.userData.velocity.clone().sub(p2.userData.velocity); const vN = relVel.dot(n); if(vN < 0) { const j = -(1 + restitution) * vN / 2; const impulse = n.clone().multiplyScalar(j); p1.userData.velocity.add(impulse); p2.userData.velocity.sub(impulse); p1.userData.rotationSpeed += 0.02; p2.userData.rotationSpeed += 0.02; } const pen = (minD - d) * 0.5; const corr = n.multiplyScalar(Math.max(pen - 0.01, 0)); p1.position.add(corr); p2.position.sub(corr); } } }
+            pieces.forEach(p => { p.position.add(p.userData.velocity); p.rotateOnAxis(p.userData.rotationAxis, p.userData.rotationSpeed); p.userData.velocity.multiplyScalar(0.985); p.userData.rotationSpeed *= 0.98; });
+        }
+
+        // --- 10. LOOP ---
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const t = clock.getElapsedTime(); TWEEN.update();
+
+            if(cameraShake > 0) {
+                camera.position.x += (Math.random()-0.5) * cameraShake; camera.position.y += (Math.random()-0.5) * cameraShake; cameraShake *= 0.9;
+            } else {
+                camera.position.x += (mouseX * 5 - camera.position.x) * 0.05; camera.position.y += (mouseY * 5 - camera.position.y) * 0.05;
+            }
+            camera.lookAt(0,0,0);
+            mouseLight.position.set(mouseX * 15, mouseY * 15, 15);
+            barGroup.rotation.y = Math.sin(t*0.1) * 0.1 + (mouseX * 0.1); barGroup.rotation.x = Math.cos(t*0.15) * 0.05 + (mouseY * 0.1);
+            
+            dustSystem.rotation.y = t * 0.02;
+            const hPos = heartSystem.geometry.attributes.position;
+            for(let i=0; i<150; i++) { hPos.setY(i, hPos.getY(i) + 0.03 + Math.sin(t+i)*0.01); if(hPos.getY(i) > 40) hPos.setY(i, -40); } hPos.needsUpdate = true;
+            
+            if(state >= 3) {
+                const cPos = confettiGeo.attributes.position.array;
+                for(let i=0; i<500; i++) {
+                    cPos[i*3] += confettiVels[i].x; cPos[i*3+1] += confettiVels[i].y; cPos[i*3+2] += confettiVels[i].z;
+                    confettiVels[i].multiplyScalar(0.96); confettiVels[i].y -= 0.005;
+                    cPos[i*3] += Math.sin(t*10 + i)*0.02; 
+                }
+                confettiGeo.attributes.position.needsUpdate = true; confettiMat.opacity -= 0.002;
+            }
+
+            updatePhysics();
+            composer.render();
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
